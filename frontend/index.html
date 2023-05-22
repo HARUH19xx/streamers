@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/index.js" defer></script>
+</head>
+
+<body class="body">
+    <div class="login">
+        <h2 class="login__title">ログイン</h2>
+        <form id="login-form" class="login__form">
+            <label for="username" class="login__label">名前:</label><br>
+            <input type="text" id="username" name="username" class="login__input"><br>
+            <label for="password" class="login__label">パスワード:</label><br>
+            <input type="password" id="password" name="password" class="login__input"><br>
+            <input type="submit" value="Submit" class="login__submit">
+        </form>
+        <p id="result" class="login__result"></p>
+        <a class="login__submit" href="./signUp.html">サインアップする</a>
+    </div>
+</body>
+
+</html>

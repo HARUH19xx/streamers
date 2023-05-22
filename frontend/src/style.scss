@@ -1,0 +1,66 @@
+//変数の指定
+$default-color: rgba(255, 255, 255, 1); //暗い背景色のときの文字など
+$dark-color: rgba(0, 0, 30, 0.9); //明るい背景色のときの文字など
+$night-color: rgba(35, 59, 108, 0.8); //メインカラー
+$star-color: rgba(255, 215, 104, 1); //サブカラー
+$beni-color: rgba(167,31,65,1); //アクセントカラー
+$sakura-color: rgba(254, 238, 237, 1); //サブアクセントカラー
+
+//フォント
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+//関数の指定
+@mixin flex-detail($direction: column, $align: center, $justify: center) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+//スタイルの適用
+.body {
+    @include flex-detail(row, center, center);
+    font-family: 'DotGothic16', sans-serif;
+    background-color: $night-color;
+    color: $default-color;
+}
+
+.login {
+    &__title {
+        color: $beni-color;
+    }
+
+    &__form {
+        background-color: $sakura-color;
+        padding: 20vh;
+        border-radius: 10px;
+    }
+
+    &__label {
+        color: $dark-color;
+    }
+
+    &__input {
+        width: 100%;
+        height: fit-content;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.6rem;
+    }
+
+    &__submit {
+        background-color: $star-color;
+        color: $dark-color;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        height: fit-content;
+        font-size: 1.6rem;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    &__result {
+        margin-top: 20px;
+    }
+}

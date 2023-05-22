@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+.body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DotGothic16', sans-serif;
+  background-color: rgba(35, 59, 108, 0.8);
+  color: white; }
+
+.login__title {
+  color: #a71f41; }
+
+.login__form {
+  background-color: #feeeed;
+  padding: 20vh;
+  border-radius: 10px; }
+
+.login__label {
+  color: rgba(0, 0, 30, 0.9); }
+
+.login__input {
+  width: 100%;
+  height: fit-content;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.6rem; }
+
+.login__submit {
+  background-color: #ffd768;
+  color: rgba(0, 0, 30, 0.9);
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: fit-content;
+  font-size: 1.6rem;
+  margin-top: 20px;
+  cursor: pointer; }
+
+.login__result {
+  margin-top: 20px; }

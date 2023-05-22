@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      # - ./data:/var/lib/postgresql/data
+      # - ./01_init_user.sql:/docker-entrypoint-initdb.d/01_init_user.sql
+      # - ./02_init_db.sql:/docker-entrypoint-initdb.d/02_init_db.sql
+      # - ./03_init_tables.sql:/docker-entrypoint-initdb.d/03_init_tables.sql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    # env_file:
+    #   - .env
+    ports:
+      - 5433:5432
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+# dockerで次のようなエラーが出たとき、それはホスト名を間違えているか、ポート番号を間違えているか、まだデータベースがきどうしていないかのどれかであり、最も多いのはデータベースが起動していないとき。
+# django.db.utils.OperationalError: could not connect to server: Connection refused
+# Is the server running on host "db" (192.168.176.2) and accepting TCP/IP connections on port 5432?

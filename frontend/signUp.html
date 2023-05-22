@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <script src="./src/signUp.js" defer></script>
+    <title>サインアップ</title>
+</head>
+
+<body class="body">
+    <div class="login__form">
+        <h1 class="login__title">サインアップ</h1>
+        <form id="loginForm">
+            <label class="login__label" for="username">名前</label><br>
+            <input class="login__input" type="text" id="username" required><br>
+            <label class="login__label" for="password">パスワード</label><br>
+            <input class="login__input" type="password" id="password" required><br>
+            <input class="login__submit" type="submit" value="サインアップ">
+        </form>
+        <p id="result" class="login__result"></p>
+        <a class="login__submit" href="./index.html">ログイン画面に戻る</a>
+    </div>
+</body>
+
+</html>
