@@ -24,7 +24,7 @@ loginForm.addEventListener('submit', (e) => {
             return response.json();
         })
         .then((json) => {
-            if (json.token) {
+            if (json.message) {
                 result.innerText = 'サインアップ成功！';
                 result.style.color = 'green'; // Login成功時は文字色を緑にする。
             } else {
