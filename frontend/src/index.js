@@ -2,7 +2,7 @@ fetch('http://localhost:8000/crud_videos/hello/')
     .then(response => response.json())
     .then(data => console.log(data));
 
-document.getElementById('login-form').addEventListener('submit', function(event) {
+document.getElementById('login-form').addEventListener('submit', function (event) {
     // フォームのデフォルトの送信動作を停止
     event.preventDefault();
 
@@ -17,18 +17,21 @@ document.getElementById('login-form').addEventListener('submit', function(event)
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
+        credentials: 'include',
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.token) {
-            // レスポンスにトークンが含まれている場合、ログイン成功
-            document.getElementById('result').textContent = 'Login successful';
-        } else {
-            // レスポンスにトークンが含まれていない場合、ログイン失敗
-            document.getElementById('result').textContent = 'Login failed';
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Login successful') {
+                // メッセージが 'Login successful' であれば、ログイン成功と判断
+                document.getElementById('result').textContent = 'Login successful';
+                // ダッシュボードへリダイレクト
+                window.location.href = '/dashboard.html';
+            } else {
+                // そうでない場合、ログイン失敗と判断
+                document.getElementById('result').textContent = 'Login failed';
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 });

@@ -7,7 +7,11 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# HH「Of course!」
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
+
 
 DEBUG = True
 
@@ -104,7 +108,9 @@ USE_I18N = True
 USE_TZ = True
 
 # すべてのオリジンからのリクエストを許可する
-# CORS_ORIGIN_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
