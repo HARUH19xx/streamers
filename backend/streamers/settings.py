@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "crud_videos",
     "users",
     "corsheaders",
+    "boto3",
 ]
 
 MIDDLEWARE = [

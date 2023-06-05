@@ -29,6 +29,7 @@ def get_db_connection():
 
 # ログインと登録の処理を設定する
 
+#　登録処理
 class RegisterView(APIView):
     """User register view."""
     permission_classes = (permissions.AllowAny,)
@@ -59,6 +60,7 @@ class RegisterView(APIView):
         return Response({"message": "User created"}, status=status.HTTP_201_CREATED)
 
 
+# ログイン処理
 class LoginView(APIView):
     """User login view."""
     permission_classes = (permissions.AllowAny,)

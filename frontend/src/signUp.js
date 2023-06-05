@@ -27,6 +27,8 @@ loginForm.addEventListener('submit', (e) => {
             if (json.message) {
                 result.innerText = 'サインアップ成功！';
                 result.style.color = 'green'; // Login成功時は文字色を緑にする。
+                //　ログイン画面に遷移する
+                window.location.href = 'http://localhost:5500/'
             } else {
                 result.innerText = 'サインアップ失敗！';
                 result.style.color = 'red'; // Login失敗時は文字色を赤にする。
