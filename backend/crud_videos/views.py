@@ -11,6 +11,7 @@ from django.conf import settings
 from pathlib import Path
 from datetime import datetime
 from django.db import connection
+from botocore.exceptions import BotoCoreError, NoCredentialsError, ClientError
 
 # AWS S3設定
 AWS_REGION = os.getenv('AWS_REGION')
@@ -47,7 +48,6 @@ def hello(request):
 
 
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
 @permission_classes([IsAuthenticatedWithRedis])
 def upload_video(request):
     try:
