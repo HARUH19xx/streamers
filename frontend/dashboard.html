@@ -12,20 +12,22 @@
 <body>
     <div class="container">
         <h1 class="my-4">動画を投稿するぞ！</h1>
-        <h2 id="result">われらが光をあまねく世界に！！</h2i>
-            <div class="mb-3">
-                <form id="video-upload">
-                    <label for="image-select" class="form-label">動画を投稿</label>
-                    <input type="file" class="form-control-file" id="file" name="file">
-                    <textarea name="title" id="title" cols="30" rows="10"></textarea>
-                    <textarea name="description" id="description" placeholder="コメントを入力してください（100文字以内）" maxlength="100"
-                        required></textarea>
-                    <button type="submit" class="btn btn-primary mt-2">投稿！</button>
-                </form>
-            </div>
-            <div class="row">
-                <!-- 画像表示エリア -->
-            </div>
+        <h2 id="result">われらが光をあまねく世界に！！</h2>
+        <div class="mb-3">
+            <form id="video-upload">
+                <label for="file" class="form-label">動画を投稿</label>
+                <input type="file" class="form-control-file" id="file" name="file">
+                <label for="title" class="form-label">タイトル</label>
+                <textarea name="title" id="title" cols="30" rows="10"></textarea>
+                <label for="comment" class="form-label">コメント</label>
+                <textarea name="comment" id="comment" placeholder="コメントを入力してください（100文字以内）" maxlength="100"
+                    required></textarea>
+                <button type="submit" class="btn btn-primary mt-2">投稿！</button>
+            </form>
+        </div>
+        <div class="row">
+            <!-- 画像表示エリア -->
+        </div>
     </div>
     <button id="edit-profile-btn">プロフィール編集</button>
     <button id="logout-btn">ログアウト</button>

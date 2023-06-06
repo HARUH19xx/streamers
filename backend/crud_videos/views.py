@@ -36,7 +36,7 @@ class IsAuthenticatedWithRedis(permissions.BasePermission):
         if user_id is None:
             return False
 
-        request.user_id = user_id  # Add user_id to request object so we can use it later
+        request.user_id = user_id  # 後で使えるように、リクエストにユーザーIDをセット
 
         return True
 
@@ -59,9 +59,16 @@ def upload_video(request):
             local_path = default_storage.save(f'tmp/video/{datetime.now().strftime("%Y%m%d%H%M%S")}_{video.name}', ContentFile(video.read()))
             absolute_local_path = os.path.join(settings.MEDIA_ROOT, local_path)
             
-            # S3へアップロード
-            with open(absolute_local_path, 'rb') as data:
-                s3_client.upload_fileobj(data, AWS_S3_BUCKET_NAME, f'uploads/{Path(local_path).name}')
+            try:
+                # S3へアップロード
+                with open(absolute_local_path, 'rb') as data:
+                    s3_client.upload_fileobj(data, AWS_S3_BUCKET_NAME, f'uploads/{Path(local_path).name}', ExtraArgs={'ContentType': video.content_type})
+            except NoCredentialsError as e:
+                print(f"NoCredentialsError: {e}")
+                return Response({'success': False, 'message': 'AWS認証情報が見つかりませんでした。'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            except BotoCoreError as e:
+                print(f"BotoCoreError: {e}")
+                return Response({'success': False, 'message': 'AWS S3へのファイルアップロードに失敗しました。'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             # データベースにコメントと動画のURLを保存
             video_url = f'https://{AWS_S3_BUCKET_NAME}.s3-{AWS_REGION}.amazonaws.com/uploads/{Path(local_path).name}'
